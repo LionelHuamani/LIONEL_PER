@@ -1,32 +1,25 @@
-// Espera a que la página cargue completamente
+/* // Espera a que la página cargue completamente
 window.onload = function() {
     // Configura el tiempo que deseas que el loader esté visible (en milisegundos)
-    const loaderDuration = 5000; // 3000 ms = 3 segundos
+    //const loaderDuration = 5000; // 3000 ms = 3 segundos
 
     // Después del tiempo especificado, oculta el loader y muestra el contenido
-setTimeout(() => {
+/* setTimeout(() => {
         document.getElementById('loader').style.display = 'none'; // Oculta el loader
         document.querySelector('.as').style.display = 'block'; // Muestra el contenido
     }, loaderDuration);
-}
-/* 	document.addEventListener("DOMContentLoaded", () => {
-		// Simulamos una carga de 2 segundos
-		setTimeout(() => {
-			// Ocultar el loader
-			document.getElementById("loader").style.display = "none"; 
-			
-			// Mostrar el contenido y las animaciones
-			document.querySelector(".flotante").style.display = "block"; 
-			document.querySelector(".navbar").style.display = "flex"; 
-			document.querySelector("main").style.display = "block"; 
-	
-			// Aplicar animaciones de opacidad
-			document.querySelector(".flotante").classList.add("show");
-			document.querySelector(".navbar").style.opacity = 1; // Hacer la navbar visible
-			document.querySelector("main").style.opacity = 1; // Hacer el main visible
-		}, 2000); // Tiempo del loader
-	});
-	 */
+
+}*/
+// Simular un tiempo de carga
+window.onload = function() {
+    // Esperar 2 segundos antes de mostrar el contenido
+    setTimeout(function() {
+        // Ocultar el loader
+        document.getElementById('loader').style.display = 'none';
+        // Mostrar el contenido
+        document.getElementById('content').style.display = 'block';
+    }, 2000); // 2000 milisegundos = 2 segundos
+};
 
 /* efecto letra */
 /* var typed = new typed (".efecto",{
@@ -61,3 +54,33 @@ hamburguesa.onclick = function(){// permite k se le haga click a icono
 	navBar = document.querySelector('nav'); //selecciona la etiqueta nav del html
 	navBar.classList.toggle("active"); // anade una clase
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup');
+    const closePopup = document.getElementById('close-popup');
+    const celebracionesContainer = document.getElementById('celebraciones-container');
+
+    // Obtener celebraciones del servidor
+    fetch('/celebraciones')
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.length > 0) {
+                data.forEach((celebracion) => {
+                    const div = document.createElement('div');
+                    div.innerHTML = `
+                        <h3>${celebracion.nombre}</h3>
+                        <p>${celebracion.descripcion}</p>
+                    `;
+                    celebracionesContainer.appendChild(div);
+                });
+                popup.classList.remove('hidden'); // Mostrar el popup
+            }
+        })
+        .catch((error) => console.error('Error al cargar celebraciones:', error));
+
+    // Cerrar la ventana emergente
+    closePopup.addEventListener('click', () => {
+        popup.classList.add('hidden');
+    });
+});

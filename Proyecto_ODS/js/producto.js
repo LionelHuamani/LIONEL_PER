@@ -1,3 +1,11 @@
+/* menu amburguesa */
+hamburguesa = document.querySelector('.hamburguesa');// me selecciona una clase del archivo html
+hamburguesa.onclick = function(){// permite k se le haga click a icono
+	navBar = document.querySelector('nav'); //selecciona la etiqueta nav del html
+	navBar.classList.toggle("active"); // anade una clase
+}
+
+
 
 /*const btnCart = document.querySelector(".container-icon")
 

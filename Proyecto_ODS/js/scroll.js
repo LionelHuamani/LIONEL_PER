@@ -15,7 +15,7 @@ window.sr = ScrollReveal()
         delay:4500,
         interval:200,
         origin: 'left',
-        distance:'150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });
@@ -24,7 +24,7 @@ window.sr = ScrollReveal()
         interval:200,
         delay:500,
         origin: 'left',
-        distance:'150%',
+        distance:'20px',
         reset:false,
         opacity:0,
     });
@@ -33,7 +33,7 @@ window.sr = ScrollReveal()
         interval:200,
         delay:500,
         origin: 'right',
-        distance:'150%',
+        distance:'20px',
         reset:false,
         opacity:0,
     });
@@ -42,7 +42,7 @@ window.sr = ScrollReveal()
         interval:200,
         delay:500,
         origin: 'bottom',
-        distance:'-150%',
+        distance:'30px',
         reset:false,
         opacity:0,
     });
@@ -52,7 +52,7 @@ window.sr = ScrollReveal()
         easing:'ease-in-out', //controla la aceleracion (mejor dicho la velocidad)
         delay:500,
         origin: 'bottom',
-        distance:'-150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });
@@ -62,7 +62,7 @@ window.sr = ScrollReveal()
         easing:'ease-in-out',
         delay:500,
         origin: 'left',
-        distance:'150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });
@@ -72,7 +72,7 @@ window.sr = ScrollReveal()
         easing:'ease-in-out',
         delay:500, //el retraso antes de que la animacion comience
         origin: 'right',
-        distance:'150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });
@@ -82,7 +82,7 @@ window.sr = ScrollReveal()
         easing:'ease-in-out',
         delay:500,
         origin: 'top',
-        distance:'150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });
@@ -92,7 +92,7 @@ window.sr = ScrollReveal()
         easing:'ease-in-out',
         delay:500,
         origin: 'left',
-        distance:'150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });
@@ -102,7 +102,7 @@ window.sr = ScrollReveal()
         easing:'ease-in-out',
         delay:500,
         origin: 'left',
-        distance:'150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });
@@ -112,7 +112,7 @@ window.sr = ScrollReveal()
         easing:'ease-in-out',
         delay:500,
         origin: 'right',
-        distance:'150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });
@@ -122,7 +122,7 @@ window.sr = ScrollReveal()
         easing:'ease-in-out',
         delay:500,
         origin: 'right',
-        distance:'150%',
+        distance:'50px',
         reset:false,
         opacity:0,
     });

@@ -21,10 +21,10 @@
         </div>
         <nav>
             <ul>
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="./explorar.html">Explora</a></li>
-                <li><a href="./producto.html">Producto</a></li>
-                <li><a href="./contacto.html">Contacto</a></li>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="../html/explorar.html">Explora</a></li>
+                <li><a href="../html/producto.html">Producto</a></li>
+                <li><a href="../html/contacto.html">Contacto</a></li>
             </ul>
         </nav>
         <!--         <input type="checkbox" id="check">
@@ -120,28 +120,14 @@
                 loading="lazy">
             </iframe>
             <div class="wrapper">
-                <h2>Comentarios</h2>
-                <form action="http://localhost:3001/comentarios" method="POST">
-                    <div class="group-input">
-                        <label for="">Nombre</label>
-                        <input type="text" id="nombre" name="nombre">
-                    </div>
-                    <div class="group-input">
-                        <label for="">Apellido</label>
-                        <input type="text"id="apellido" name="apellido">
-                    </div>
-                    <div class="group-input">
-                        <label for="">Email</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    <div class="group-input">
-                        <label for="">Pais</label>
-                        <input type="text" id="pais" name="pais"> 
-                    </div>
-                    <div class="group-input">
-                        <label for="comentario">Comentario</label>
-                        <textarea name="comentario" id="comentario"></textarea>
-                    </div>
+                <form  id="miFormulario">
+                    <h2>Comentarios</h2>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="mensaje" >Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
                     <button type="submit">Enviar</button>
                 </form>
                 </div>
@@ -194,6 +180,36 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script src="../js/contacto.js"></script>
+    <script>
+        document.getElementById('miFormulario').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevenir recarga de página
+        
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const mensaje = document.getElementById('mensaje').value;
+        
+            fetch('/api/datos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre, email, mensaje }),
+            })
+                .then((response) => {
+                    if (!response.ok) throw new Error('Error en el servidor');
+                    return response.text();
+                })
+                .then((data) => {
+                    alert('Mensaje enviado exitosamente');
+                    document.getElementById('miFormulario').reset(); // Limpiar formulario
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Hubo un problema al enviar el mensaje.' , error);
+                });
+        });
+        
+    </script>
 </body>
 
 </html>
