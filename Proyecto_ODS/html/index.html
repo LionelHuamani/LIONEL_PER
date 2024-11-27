@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crecemos Juntos</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="../librerias/scrollreveal.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+        rel="stylesheet" />
+    <!-- link del icono amburguesa -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- loader -->
+    <div id="loader">
+        <div class="content">
+            <h2 class="border">ODS 1</h2>
+            <h2 class="wave">ODS 1</h2>
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="flotante as" style="display: none;">
+        <div id="anuncio" class="anuncio" style="display: none;">
+            <h2 id="anuncio-titulo"></h2> <!-- Título del día importante -->
+            <p id="anuncio-descripcion"></p> <!-- Descripción del día importante -->
+            <button id="cerrar-anuncio" class="cerrar-btn">X</button> <!-- Cambiar el texto a 'X' -->
+            <button id="mas-informacion">Más Información</button>
+        </div>
+    </div>
+    <!--     <div class="load">
+        <div class="cubo">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+-->
+    <header class="navbar fijo">
+        <!--         <div class=" contenedor"> -->
+        <div class="logo">
+            <p>Crecemos Juntos</p>
+        </div>
+        <div class="hamburguesa">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./explorar.html">Explora</a></li>
+                <li><a href="./producto.html">Producto</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <!--         <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="ri-align-justify"></i>
+        </label> -->
+        <!--         </div> -->
+    </header>
+
+    <main>
+        <section class="portada contenedor">
+            <h1>Crecemos <span class="typed"></span></h1>
+            <!--             <div class="titulo" id="cadenas-texto">
+                <p>Crecemos <i class="colocar">Juntos</i></p>
+                <p>Crecemos <i class="colocar">Economicamente</i></p>
+            </div> -->
+        </section>
+        <video muted autoplay loop>
+            <source src="../img/atardecer.mp4" type="video/mp4" />
+        </video>
+        <div class="capa"></div>
+        <section class="ods">
+            <div class="contenedor reverse">
+                <div>
+                    <img src="../img/lasODS.gif" alt="" class="ods1" />
+                </div>
+                <div class="que-es">
+                    <h2>Que son las ODS?</h2>
+                    <p>
+                        Son conjunto de 17 metas globales establecidos por las naciones unidas en 2015,como parte de la
+                        agenda 2030.Su proposito es abordar desafios mundial como la pobreza , el cambio climatico , la
+                        desigualdad , la educacion y el acceso al agua , entre otros.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="ODS">
+            <div class="titulo">
+                <h2>Las 17 ODS</h2>
+            </div>
+
+            <div class="contenedor carta1">
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen1.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Fin de la Pobreza</h3>
+                        <p>Poner fin a la pobreza en todas sus formas en todo el mundo</p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen2.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Lucha contra el Hambre</h3>
+                        <p>
+                            Poner fin al hambre, lograr la seguridad alimentaria y la mejora
+                            de la nutrición y promover la agricultura sostenible
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen3.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Buena Salud</h3>
+                        <p>
+                            Garantizar una vida sana y promover el bienestar para todos en
+                            todas las edades
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen4.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Educacion de Calidad</h3>
+                        <p>
+                            Garantizar una educación inclusiva, equitativa y de calidad y
+                            promover oportunidades de aprendizaje durante toda la vida para
+                            todos
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor carta2">
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen5.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Igualdad de Genero</h3>
+                        <p>
+                            Lograr la igualdad entre los géneros y empoderar a todas las
+                            mujeres y las niñas
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen6.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Agua potable y Saneamiento</h3>
+                        <p>
+                            Garantizar la disponibilidad de agua y su gestión sostenible y
+                            el saneamiento para todos
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen7.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Energías renovables</h3>
+                        <p>
+                            Garantizar el acceso a una energía asequible, segura, sostenible
+                            y moderna para todos
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen8.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Empleo digno y Crecimiento Económico</h3>
+                        <p>
+                            Promover el crecimiento económico sostenido, inclusivo y
+                            sostenible, el empleo pleno y productivo y el trabajo decente
+                            para todos
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor carta3">
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen9.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Innovación e Infraestructuras</h3>
+                        <p>
+                            Construir infraestructuras resilientes, promover la
+                            industrialización inclusiva y sostenible y fomentar la
+                            innovación
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen10.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Reducción de la desigualdad</h3>
+                        <p>Reducir la desigualdad en y entre los países</p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen11.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Ciudades y Comunidades sostenibles</h3>
+                        <p>
+                            Lograr que las ciudades y los asentamientos humanos sean
+                            inclusivos, seguros, resilientes y sostenibles
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen12.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Consumo responsable</h3>
+                        <p>Garantizar modalidades de consumo y producción sostenibles</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor carta4">
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen13.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Lucha contra el cambio climático</h3>
+                        <p>
+                            Adoptar medidas urgentes para combatir el cambio climático y sus
+                            efectos
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen14.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Flora y Fauna Acuáticas</h3>
+                        <p>
+                            Conservar y utilizar en forma sostenible los océanos, los mares
+                            y los recursos marinos para el desarrollo sostenible
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen15.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Flora y Fauna terrestre</h3>
+                        <p>
+                            Gestionar sosteniblemente los bosques, luchar contra la
+                            desertificación, detener e invertir la degradación de las
+                            tierras y detener la pérdida de biodiversidad
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen16.png" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Paz y Justicia</h3>
+                        <p>Promover sociedades justas, pacíficas e inclusivas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor1 carta5">
+                <div class="container">
+                    <div class="face imagen-ods">
+                        <img src="../img/imagen17.jpg" alt="" />
+                    </div>
+                    <div class="face text-ods">
+                        <h3>Alianzas para el logro de los objetivos</h3>
+                        <p>
+                            Revitalizar la Alianza Mundial para el Desarrollo Sostenible
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="info">
+            <div class="history">
+                <div class="ipo">
+                    <img src="../img/historia.jpg" alt="" />
+                </div>
+                <div class="historia">
+                    <h2>Historia</h2>
+                    <p>
+                        los objetivos de Desarrollo Sostenible(ODS) surgieron como una continuacion de los objetivos de
+                        Desarrollo de milenos(ODM) , que fueron establecidos en el año 2000 para abordar poblemas
+                        globales , pero que finalizaban en el 2015.Al ver los avanzes , pero tambien las limitaciones de
+                        los ODM en la onu decidio crear una agenda mas ambiciosa y con un enfoque mas integral , En 2015
+                        tras amplias consultas con gobiernos , organizaciones y ciudadonos se aprobaron los 17 ODS
+                        dentro de la agenda 2030.Estos objetivos amplian el alcance de los ODM incomporando areas claves
+                        como la sostenibilidad ambiental , la lucha contra el cambio climaico la promocion de la paz y
+                        justicia con el fin de lograr un desarrollo mas equilibrado y sostenible en todo el mundo
+                    </p>
+                </div>
+            </div>
+            <div class="importancia">
+                <h2>Importacia</h2>
+                <p>
+                    Son relevantes para todos los paises y personas porque abordan problemas universales que afectan a
+                    la humanidad en su conjunto. No solo estan destinados a paises en desarrollo , sino que reconocen
+                    que incluso las naciones mas ricas enfrentan desafios en areas como la desigualdad , el cambio
+                    climatico y el consumo insostenible
+                </p>
+            </div>
+        </section>
+    </main>
+    <!-- libreria de maquina de escribir -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <!-- maquitna de escribir -->
+    <script src="../js/index.js"></script>
+    <!-- codigo para el scroll -->
+    <script src="../js/scroll.js"></script>
+
+    <!-- calendar -->
+    <script src="celebraciones.js"></script>
+
+    <!-- conexion -->
+    
+
+
+    <footer>
+        <div class="logo-footer">
+            <p>Crecemos Juntos</p>
+        </div>
+        <ul class="seciones-footer">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Explorar</a></li>
+            <li><a href="#">Producto</a></li>
+            <li><a href="#">¿Quiénes somos?</a></li>
+        </ul>
+        <div class="share contactanos">
+            <span class="one">Contáctanos</span>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-facebook-circle-line"></i></a>
+            <a href="#"><i class="ri-whatsapp-line"></i></a>
+            <a href="#"><i class="ri-twitter-x-line"></i></a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
