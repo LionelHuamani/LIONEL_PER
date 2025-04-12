@@ -56,13 +56,13 @@ public class ProductServiceImpl implements ProductService {
     public ProductModel delete(Long id) {
         log.info("Eliminando lógicamente Datos ID: " + id);
         Optional<ProductModel> productOpt = productRepository.findById(id);
-        productRepository product = productOpt.get();
+        ProductModel product = productOpt.get();
         product.setState("I");
         return productRepository.save(product);
     }
 
     @Override
-    public ProductService restore(Long id) {
+    public ProductModel restore(Long id) {
         log.info("Restaurando lógicamente Datos ID: " + id);
         Optional<ProductModel> productOpt = productRepository.findById(id);
         ProductModel product = productOpt.get();

@@ -48,7 +48,7 @@ public class ProductRest {
     
     @GetMapping("/state/{state}")
     public List<ProductModel> findByState(@PathVariable String state) {
-        return ProductService.findAllByState(state);
+        return productService.findAllByState(state);
     }
 
     @PutMapping("/delete/{id}")
