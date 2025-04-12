@@ -10,23 +10,24 @@ import jakarta.persistence.Table;
 
 @Entity
 @Data
-@Table(name = "client")
+@Table(name = "customer")
 public class Customer {
 
     @Id
+    @Column(name = "customer_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cliente_id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "addres")
-    private Integer addres;
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "phone")
     private String phone;
 
     @Column(name = "email")
     private String email;
+
 }

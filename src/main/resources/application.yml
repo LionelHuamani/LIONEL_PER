@@ -12,6 +12,6 @@ spring:
     hibernate:
       ddl-auto: none  # Puede ser 'create', 'update', 'validate' o 'none' | Hibernate no creará/modificará la estructura
     show-sql: true  # Para ver las consultas SQL en consola
-  sql:
-    init:
-      mode: always  # Ejecuta schema.sql y data.sql en cada inicio
+  #sql:
+    #init:
+      #mode: always  # Ejecuta schema.sql y data.sql en cada inicio
