@@ -11,23 +11,22 @@ import jakarta.persistence.Table;
 @Entity
 @Data
 @Table(name = "client")
-public class client {
+public class Customer {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "cliente_id")
+    private Integer id;
 
-    @Column(name = "dni")
-    private String dni;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "addres")
+    private Integer addres;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "phone")
+    private String phone;
 
-    @Column(name = "state")
-    private String state;
-
+    @Column(name = "email")
+    private String email;
 }

@@ -4,6 +4,7 @@ import pe.edu.vallegrande.project.model.Customer;
 import pe.edu.vallegrande.project.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,7 +17,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/v1/api/customer")
+@RequestMapping("/v1/api/client")  // Cambié de /customer a /client para que coincida con la tabla
 public class CustomerRest {
 
     private final CustomerService customerService;
@@ -27,12 +28,12 @@ public class CustomerRest {
     }
     
     @GetMapping
-    public List <Customer> findAll(){
+    public List<Customer> findAll() {
         return customerService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Customer> findById(@PathVariable Long id) {
+    public Optional<Customer> findById(@PathVariable Integer id) {  // Cambié Long por Integer
         return customerService.findById(id);
     }
 
@@ -45,5 +46,9 @@ public class CustomerRest {
     public Customer update(@RequestBody Customer customer) {
         return customerService.update(customer);
     }
-
+    
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {  // Cambié Long por Integer
+        customerService.delete(id);
+    }
 }
