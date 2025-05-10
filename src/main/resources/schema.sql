@@ -1,4 +1,4 @@
--- Active: 1746851282834@@127.0.0.1@1433@model
+-- Active: 1746857006820@@127.0.0.1@1433@model
 CREATE TABLE customer (
     customer_id INT IDENTITY(1,1) PRIMARY KEY,   
     name VARCHAR(60) NOT NULL,                  
@@ -17,7 +17,8 @@ CREATE TABLE product (
     id INT IDENTITY(1,1) PRIMARY KEY,   
     name VARCHAR(60) NOT NULL,                  
     description VARCHAR(200) NOT NULL,              
-    unit_price DECIMAL(4,2) NOT NULL,                 
+    unit_price DECIMAL(4,2) NOT NULL,   
+    stock INTEGER,              
     state CHAR(1) NOT NULL                 
 );
 

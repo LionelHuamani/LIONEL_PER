@@ -1,3 +1,4 @@
+-- Active: 1746857006820@@127.0.0.1@1433@model
 -- insertamos datos en customer
 INSERT INTO customer (name, address, type_document, number_document, phone, email)
 VALUES 
@@ -7,11 +8,11 @@ VALUES
 
 
 
-INSERT INTO product (name, description, unit_price, state) 
+INSERT INTO product (name, description, unit_price, state,stock) 
 VALUES 
-    ('Martillo', 'Martillo de acero con mango de madera', 12, 'A'),
-    ('Destornillador', 'Destornillador de punta Phillips con mango ergonómico', 49, 'A'),
-    ('Taladro', 'Taladro de 12 voltios con batería de litio', 79, 'A'),
-    ('Sierra', 'Sierra circular de 7.25 pulgadas con hoja de metal', 19, 'A'),
-    ('Clavos', 'Clavos de acero galvanizado de 2 pulgadas', 99, 'A'),
-    ('Tornillos', 'Tornillos para madera de 2 pulgadas, cabeza plana', 7.99, 'A');
+    ('Martillo', 'Martillo de acero con mango de madera', 12, 'A','20'),
+    ('Destornillador', 'Destornillador de punta Phillips con mango ergonómico', 49, 'A','30'),
+    ('Taladro', 'Taladro de 12 voltios con batería de litio', 79, 'A','55'),
+    ('Sierra', 'Sierra circular de 7.25 pulgadas con hoja de metal', 19, 'A','50'),
+    ('Clavos', 'Clavos de acero galvanizado de 2 pulgadas', 99, 'A','140'),
+    ('Tornillos', 'Tornillos para madera de 2 pulgadas, cabeza plana', 7.99, 'A','130');

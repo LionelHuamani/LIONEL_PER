@@ -30,4 +30,7 @@ public class ProductModel {
     @Column(name = "state")
     private String state;
 
+    @Column(name = "stock")
+    private String stock;
+
 }
