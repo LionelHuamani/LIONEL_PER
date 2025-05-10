@@ -1,0 +1,39 @@
+package pe.edu.vallegrande.project.model;
+
+import lombok.Data;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Table;
+
+@Entity
+@Data
+@Table(name = "customer")
+public class Customer {
+
+    @Id
+    @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "type_document")
+    private String type_document;
+
+    @Column(name = "number_document")
+    private String number_document;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "email")
+    private String email;
+
+}
