@@ -1,11 +1,12 @@
+-- Active: 1746851282834@@127.0.0.1@1433@model
 -- insertamos datos en customer
-INSERT INTO customer (name, address, type_document, number_document, phone, email)
+INSERT INTO customer (name, address, type_document, number_document, phone, email, state)
 VALUES 
-('Juan Perez', 'Av. Las Palmas 123', 'DNI','62273282','989654921', 'juanperez@example.com'),
-('Maria Lopez', 'Jr. Los Sauces 456', 'INE','233912345678234','987654321','marialopez@example.com'),
-('Carlos Ramos', 'Calle Las Gardenias 789', 'INE','45678234', '998877665', 'carlosramos@example.com');
-
-
+('Juan Perez', 'Av. Las Palmas 123', 'DNI','62273282','989654921', 'juanperez@example.com','A'),
+('Maria Lopez', 'Jr. Los Sauces 456', 'INE','233912345678234','987654321','marialopez@example.com','A'),
+('Carlos Ramos', 'Calle Las Gardenias 789', 'INE','45678234', '998877665', 'carlosramos@example.com','A');
+USE model;
+SELECT * FROM customer;
 
 INSERT INTO product (name, description, unit_price, state) 
 VALUES 

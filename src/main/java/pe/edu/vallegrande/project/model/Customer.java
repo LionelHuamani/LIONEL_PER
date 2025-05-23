@@ -36,4 +36,7 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "state")
+    private String state;
+
 }

@@ -34,15 +34,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer save(Customer customer) {
+        customer.setState("A");
         log.info("Registrondo Datos: " + customer.toString());
         return customerRepository.save(customer);
     }
 
     @Override
     public Customer update(Customer customer) {
+        customer.setState("A");
         log.info("Editando Datos: " + customer.toString());
         return customerRepository.save(customer);
     }
+    
     @Override
     public void delete(Long id) {
         customerRepository.deleteById(id);

@@ -36,7 +36,7 @@ public class CustomerRest {
 
     @PutMapping("/{id}")
     public Customer update(@PathVariable Long id, @RequestBody Customer customer) {
-        customer.setId(id); // Con Lombok puedes hacer esto directamente
+        //customer.setId(id); // Con Lombok puedes hacer esto directamente
         return customerService.update(customer);
     }
 

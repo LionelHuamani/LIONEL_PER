@@ -4,11 +4,12 @@ CREATE TABLE customer (
     name VARCHAR(60) NOT NULL,                  
     address VARCHAR(200) NOT NULL,
     type_document CHAR(3) NOT NULL,
-	number_document CHAR(15) NOT NULL,              
+	number_document VARCHAR(15) NOT NULL,              
     phone VARCHAR(20) NOT NULL,                 
-    email VARCHAR(250) NOT NULL                 
+    email VARCHAR(250) NOT NULL,
+    state CHAR(1) NOT NULL                 
 );
-
+USE model;
 SELECT * FROM customer;
 
 DROP TABLE customer;
