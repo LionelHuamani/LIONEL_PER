@@ -17,9 +17,9 @@ CREATE TABLE product (
     id INT IDENTITY(1,1) PRIMARY KEY,   
     name VARCHAR(60) NOT NULL,                  
     description VARCHAR(200) NOT NULL,              
-    unit_price DECIMAL(4,2) NOT NULL,   
-    stock INTEGER,              
-    state CHAR(1) NOT NULL                 
+    unit_price DECIMAL(4,2) NOT NULL,                
+    state CHAR(1) NOT NULL CHECK (state IN ('A', 'I')),
+    stock INT NOT NULL CHECK (stock >= 0)                 
 );
 
 SELECT * FROM product;
