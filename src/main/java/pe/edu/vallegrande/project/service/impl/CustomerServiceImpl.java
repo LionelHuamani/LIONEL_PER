@@ -41,10 +41,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer update(Customer customer) {
-        customer.setState("A");
-        log.info("Editando Datos: " + customer.toString());
-        return customerRepository.save(customer);
-    }
+    // NO fuerces el estado a "A"
+    log.info("Editando Datos: " + customer.toString());
+    return customerRepository.save(customer);
+}
     
     @Override
     public void delete(Long id) {
