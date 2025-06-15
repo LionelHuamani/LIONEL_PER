@@ -1,0 +1,131 @@
+<link rel="stylesheet" href="customer-form.component.scss">
+
+<div class="form-container">
+  <h2>Registro de Cliente</h2>
+
+  <div *ngIf="successMessage" class="alert success">
+    <span>✓</span> {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert error">
+    <span>⚠</span> {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre">Nombre Completo</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        formControlName="name"
+        [class.invalid]="form.get('name')?.invalid && (form.get('name')?.touched || form.get('name')?.dirty)"
+        placeholder="Ingrese el nombre completo"
+      />
+      <div class="error-message" *ngIf="form.get('name')?.hasError('nombreInvalido') && (form.get('name')?.touched || form.get('name')?.dirty)">
+        {{ form.get('name')?.getError('nombreInvalido') }}
+      </div>
+      <div class="error-message" *ngIf="form.get('name')?.hasError('required') && (form.get('name')?.touched || form.get('name')?.dirty)">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        formControlName="address"
+        [class.invalid]="form.get('address')?.invalid && (form.get('address')?.touched || form.get('address')?.dirty)"
+        placeholder="Ingrese la dirección completa"
+      />
+      <div class="error-message" *ngIf="form.get('address')?.hasError('direccionInvalida') && (form.get('address')?.touched || form.get('address')?.dirty)">
+        {{ form.get('address')?.getError('direccionInvalida') }}
+      </div>
+      <div class="error-message" *ngIf="form.get('address')?.hasError('required') && (form.get('address')?.touched || form.get('address')?.dirty)">
+        La dirección es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tipoDocumento">Tipo de Documento</label>
+      <select
+        id="tipoDocumento"
+        name="tipoDocumento"
+        formControlName="type_document"
+        [class.invalid]="form.get('type_document')?.invalid && (form.get('type_document')?.touched || form.get('type_document')?.dirty)"
+        required
+      >
+        <option value="" disabled selected>Seleccione un tipo de documento</option>
+        <option value="DNI">DNI</option>
+        <option value="CNE">CNE</option>
+      </select>
+      <div class="error-message" *ngIf="form.get('type_document')?.hasError('required') && (form.get('type_document')?.touched || form.get('type_document')?.dirty)">
+        El tipo de documento es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numeroDocumento">Número de Documento</label>
+      <input
+        type="tel"
+        id="numeroDocumento"
+        name="numeroDocumento"
+        formControlName="number_document"
+        [class.invalid]="form.get('number_document')?.invalid && (form.get('number_document')?.touched || form.get('number_document')?.dirty)"
+        placeholder="Ingrese el número de documento"
+      />
+      <div class="error-message" *ngIf="form.get('number_document')?.hasError('documentoInvalido') && (form.get('number_document')?.touched || form.get('number_document')?.dirty)">
+        {{ form.get('number_document')?.getError('documentoInvalido') }}
+      </div>
+      <div class="error-message" *ngIf="form.get('number_document')?.hasError('required') && (form.get('number_document')?.touched || form.get('number_document')?.dirty)">
+        El número de documento es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="celular">Celular</label>
+      <input
+        type="tel"
+        id="celular"
+        name="celular"
+        formControlName="phone"
+        [class.invalid]="form.get('phone')?.invalid && (form.get('phone')?.touched || form.get('phone')?.dirty)"
+        placeholder="Ingrese el número de celular"
+      />
+      <div class="error-message" *ngIf="form.get('phone')?.hasError('celularInvalido') && (form.get('phone')?.touched || form.get('phone')?.dirty)">
+        {{ form.get('phone')?.getError('celularInvalido') }}
+      </div>
+      <div class="error-message" *ngIf="form.get('phone')?.hasError('required') && (form.get('phone')?.touched || form.get('phone')?.dirty)">
+        El número de celular es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Correo Electrónico</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        formControlName="email"
+        [class.invalid]="form.get('email')?.invalid && (form.get('email')?.touched || form.get('email')?.dirty)"
+        placeholder="Ingrese el correo electrónico"
+      />
+      <div class="error-message" *ngIf="form.get('email')?.hasError('correoInvalido') && (form.get('email')?.touched || form.get('email')?.dirty)">
+        {{ form.get('email')?.getError('correoInvalido') }}
+      </div>
+      <div class="error-message" *ngIf="form.get('email')?.hasError('required') && (form.get('email')?.touched || form.get('email')?.dirty)">
+        El correo electrónico es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn cancelar" (click)="cancelar()">
+        <span>✕</span> Cancelar
+      </button>
+      <button type="submit" class="btn guardar" [disabled]="form.invalid">
+        <span>✓</span> {{ form.value.id ? 'Actualizar' : 'Registrar' }}
+      </button>
+    </div>
+  </form>
+</div>

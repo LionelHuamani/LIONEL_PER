@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="product-list.component.html">
+
+<!-- Botón fijo para mostrar/ocultar sidebar -->
+<button class="toggle-sidebar" (click)="toggleSidebar()" aria-label="Mostrar/Ocultar menú">
+  <span class="icon">{{ isSidebarOpen ? '✖' : '☰' }}</span>
+</button>
+
+<div class="app-container">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.active]="isSidebarOpen">
+    <div class="sidebar-header">
+      <h2>Menú</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="#" class="nav-item active">
+          <span class="icon">👥</span>
+          Clientes
+        </a></li>
+        <li><a href="#" class="nav-item">
+          <span class="icon">📦</span>
+          Productos
+        </a></li>
+        <li><a href="#" class="nav-item">
+          <span class="icon">🛒</span>
+          Ventas
+        </a></li>
+        <li><a href="#" class="nav-item">
+          <span class="icon">📊</span>
+          Reportes
+        </a></li>
+        <li><a href="#" class="nav-item">
+          <span class="icon">⚙️</span>
+          Configuración
+        </a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <div class="header">
+        <div class="title-section">
+          <h1>Gestión de Productos <span class="icon">👥</span></h1>
+        </div>
+        <div class="actions-section">
+          <span class="icon user-icon">👤</span>
+          <span class="user-name">Usuario_01</span>
+          <button class="main-btn" (click)="goProductForm()">
+            <span class="icon">➕</span> Nuevo Cliente
+          </button>
+        </div>
+      </div>
+
+      <!-- Filtro de estado -->
+      <div class="filter-section">
+        <label for="stateFilter">Mostrar:</label>
+        <select id="stateFilter" [(ngModel)]="filterState">
+          <option value="ALL">Todos</option>
+          <option value="A">Activos</option>
+          <option value="I">Inactivos</option>
+        </select>
+      </div>
+
+      <div class="main main-centered">
+        <section class="table-section">
+          <h2>Listado de Clientes</h2>
+          <table class="product-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>DESCRIPCION</th>
+                <th>PRECIO UNITARIO</th>
+                <th>ESTADO</th>
+                <th>STOCK</th>
+                <th>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of filteredProduct">
+                <td data-label="ID">{{ product.id }}</td>
+                <td data-label="Nombre"><span class="customer-name">{{ product.name }}</span></td>
+                <td data-label="Descripcion">{{ product.description }}</td>
+                <td data-label="Precio_Unitario">{{ product.unit_price }}</td>
+                <td data-label="Stock">{{ product.stock }}</td>
+                <td data-label="Estado">
+                  <span [class]="product.state === 'A' ? 'status-active' : 'status-inactive'">
+                    {{ product.state === 'A' ? 'Activo' : 'Inactivo' }}
+                  </span>
+                </td>
+                <td data-label="Acciones">
+                  <ng-container *ngIf="product.state === 'A'; else inactivoBtns">
+                    <button class="action-btn edit-btn" title="Editar" (click)="editProduct(product)">Editar</button>
+                    <button class="action-btn delete-btn" title="Eliminar" (click)="deleteProduct(product)">Eliminar</button>
+                  </ng-container>
+                  <ng-template #inactivoBtns>
+                    <button class="action-btn restore-btn" title="Restaurar" (click)="restoreProduct(product)">Restaurar</button>
+                  </ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="scroll-icon">⬇</div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>

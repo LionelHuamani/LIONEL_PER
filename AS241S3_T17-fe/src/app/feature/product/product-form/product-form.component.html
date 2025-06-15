@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="product-form.component.scss">
+
+<div class="form-container">
+  <h2>Registro de Productos</h2>
+
+  <div *ngIf="successMessage" class="alert success">
+    <span>✓</span> {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert error">
+    <span>⚠</span> {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre">Nombre Del Producto</label>
+      <input type="text" id="nombre" name="nombre" formControlName="name"
+        [class.invalid]="form.get('name')?.invalid && (form.get('name')?.touched || form.get('name')?.dirty)"
+        placeholder="Ingrese el nombre completo" />
+      <div class="error-message"
+        *ngIf="form.get('name')?.hasError('nombreInvalido') && (form.get('name')?.touched || form.get('name')?.dirty)">
+        {{ form.get('name')?.getError('nombreInvalido') }}
+      </div>
+      <div class="error-message"
+        *ngIf="form.get('name')?.hasError('required') && (form.get('name')?.touched || form.get('name')?.dirty)">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripcion del Producto</label>
+      <input type="text" id="descripcion" name="descripcion" formControlName="description"
+        [class.invalid]="form.get('description')?.invalid && (form.get('description')?.touched || form.get('description')?.dirty)"
+        placeholder="Ingrese la descripcion del producto" />
+      <div class="error-message"
+        *ngIf="form.get('description')?.hasError('descripcionInvalido') && (form.get('description')?.touched || form.get('description')?.dirty)">
+        {{ form.get('description')?.getError('descripcionInvalido') }}
+      </div>
+      <div class="error-message"
+        *ngIf="form.get('description')?.hasError('required') && (form.get('description')?.touched || form.get('description')?.dirty)">
+        La descripcion es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="precioUnitario">Precio_Unitario</label>
+      <input type="number" id="precioUnitario" name="precioUnitario" formControlName="unit_price"
+        [class.invalid]="form.get('unit_price')?.invalid && (form.get('unit_price')?.touched || form.get('unit_price')?.dirty)"
+        placeholder="Ingrese el precio del producto" />
+      <div class="error-message"
+        *ngIf="form.get('unit_price')?.hasError('precioUnitarioInvalido') && (form.get('unit_price')?.touched || form.get('unit_price')?.dirty)">
+        {{ form.get('unit_price')?.getError('precioUnitarioInvalido') }}
+      </div>
+      <div class="error-message"
+        *ngIf="form.get('unit_price')?.hasError('required') && (form.get('unit_price')?.touched || form.get('unit_price')?.dirty)">
+        El precio es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <input type="number" id="stock" name="stock" formControlName="stock"
+        [class.invalid]="form.get('stock')?.invalid && (form.get('stock')?.touched || form.get('stock')?.dirty)"
+        placeholder="Ingrese el stock del producto" />
+      <div class="error-message"
+        *ngIf="form.get('stock')?.hasError('stockInvalido') && (form.get('stock')?.touched || form.get('stock')?.dirty)">
+        {{ form.get('stock')?.getError('stockInvalido') }}
+      </div>
+      <div class="error-message"
+        *ngIf="form.get('stock')?.hasError('min') && (form.get('stock')?.touched || form.get('stock')?.dirty)">
+        El stock debe ser mayor o igual a 0.
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn cancelar" (click)="cancelar()">
+        <span>✕</span> Cancelar
+      </button>
+      <button type="submit" class="btn guardar" [disabled]="form.invalid">
+        <span>✓</span> {{ form.value.id ? 'Actualizar' : 'Registrar' }}
+      </button>
+    </div>
+  </form>
+</div>
