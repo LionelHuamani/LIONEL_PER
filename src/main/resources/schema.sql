@@ -1,4 +1,4 @@
--- Active: 1748016413094@@127.0.0.1@1433@model
+-- Active: 1748310992851@@127.0.0.1@1433@model
 CREATE TABLE customer (
     customer_id INT IDENTITY(1,1) PRIMARY KEY,   
     name VARCHAR(60) NOT NULL,                  
