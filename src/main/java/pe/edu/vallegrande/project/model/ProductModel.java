@@ -24,6 +24,9 @@ public class ProductModel {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "category")
+    private String category;
+
     @Column(name = "unit_price")
     private Double unit_price;
 
@@ -31,6 +34,6 @@ public class ProductModel {
     private String state;
 
     @Column(name = "stock")
-    private String stock;
+    private Integer stock;
 
 }
