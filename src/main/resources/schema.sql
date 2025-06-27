@@ -7,6 +7,7 @@ CREATE TABLE customer (
 	number_document VARCHAR(15) NOT NULL,              
     phone VARCHAR(20) NOT NULL,                 
     email VARCHAR(250) NOT NULL,
+    birth_date DATE,
     state CHAR(1) NOT NULL                 
 );
 USE model;

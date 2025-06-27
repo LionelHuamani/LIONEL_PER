@@ -1,5 +1,7 @@
 package pe.edu.vallegrande.project.rest;
-
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import pe.edu.vallegrande.project.model.Customer;
 import pe.edu.vallegrande.project.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,18 +32,47 @@ public class CustomerRest {
     }
 
     @PostMapping("/save")
-    public Customer save(@RequestBody Customer customer) {
-        return customerService.save(customer);
+    public ResponseEntity<?> save(@RequestBody Customer customer) {
+        try {
+            Customer savedCustomer = customerService.save(customer);
+            return ResponseEntity.ok(savedCustomer);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error interno del servidor: " + e.getMessage());
+        }
     }
 
     @PutMapping("/{id}")
-    public Customer update(@PathVariable Long id, @RequestBody Customer customer) {
-        //customer.setId(id); // Con Lombok puedes hacer esto directamente
-        return customerService.update(customer);
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Customer customer) {
+        try {
+            customer.setId(id);
+            Customer updatedCustomer = customerService.update(customer);
+            return ResponseEntity.ok(updatedCustomer);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error interno del servidor: " + e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         customerService.delete(id);
-}
+    }
+
+    @GetMapping("/pdf")
+    public ResponseEntity<byte[]> generateJasperPdfReport() {
+        try {
+            byte[] pdf = customerService.generateJasperPdfReport();
+            return ResponseEntity.ok()
+                    //Renombrar el archivo PDF al descargar
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=reporte_clientes.pdf")
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .body(pdf);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
