@@ -14,14 +14,16 @@ SELECT * FROM customer;
 DROP TABLE customer;
 
 CREATE TABLE product (
-    id INT IDENTITY(1,1) PRIMARY KEY,   
+    id INT IDENTITY(1,1) PRIMARY KEY,  
     name VARCHAR(60) NOT NULL,                  
     description VARCHAR(200) NOT NULL,
     category VARCHAR(60) NOT NULL,              
-    unit_price DECIMAL(6,2) NOT NULL,                
+    unit_price DECIMAL(6,2) NOT NULL,   
+    registration_date DATE NOT NULL,              
     state CHAR(1) NOT NULL CHECK (state IN ('A', 'I')),
-    stock INT NOT NULL CHECK (stock >= 0)                 
+    stock INT NOT NULL CHECK (stock >= 0)                             
 );
+
 
 SELECT * FROM product;
 

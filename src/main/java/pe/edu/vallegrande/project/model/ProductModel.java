@@ -30,6 +30,9 @@ public class ProductModel {
     @Column(name = "unit_price")
     private Double unit_price;
 
+    @Column(name = "registration_date")
+    private String registration_date;
+
     @Column(name = "state")
     private String state;
 
