@@ -1,8 +1,9 @@
 package pe.edu.vallegrande.project.rest;
 
-import pe.edu.vallegrande.project.model.ProductModel;
+import pe.edu.vallegrande.project.model.Product;
 import pe.edu.vallegrande.project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -25,39 +28,55 @@ public class ProductRest {
     public ProductRest(ProductService productService) {
         this.productService = productService;
     }
-    
+
     @GetMapping
-    public List <ProductModel> findAll(){
+    public List<Product> findAll() {
         return productService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<ProductModel> findById(@PathVariable Long id) {
+    public Optional<Product> findById(@PathVariable Long id) {
         return productService.findById(id);
     }
 
     @PostMapping("/save")
-    public ProductModel save(@RequestBody ProductModel productModel) {
+    public Product save(@RequestBody Product productModel) {
         return productService.save(productModel);
     }
 
     @PutMapping("/update")
-    public ProductModel update(@RequestBody ProductModel productModel) {
+    public Product update(@RequestBody Product productModel) {
         return productService.update(productModel);
     }
-    
+
     @GetMapping("/state/{state}")
-    public List<ProductModel> findByState(@PathVariable String state) {
+    public List<Product> findByState(@PathVariable String state) {
         return productService.findAllByState(state);
     }
 
     @PutMapping("/delete/{id}")
-    public ProductModel delete(@PathVariable Long id) {
+    public Product delete(@PathVariable Long id) {
         return productService.delete(id);
     }
 
     @PutMapping("/restore/{id}")
-    public ProductModel restore(@PathVariable Long id) {
+    public Product restore(@PathVariable Long id) {
         return productService.restore(id);
     }
+
+    @GetMapping("/pdf")
+    public ResponseEntity<byte[]> generateJasperPdfReport() {
+        try {
+            byte[] pdf = productService.generateJasperPdfReport();
+            return ResponseEntity.ok()
+                    // Renombrar el archivo PDF al descargar
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=reporte_producto.pdf")
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .body(pdf);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
 }

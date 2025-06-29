@@ -1,10 +1,10 @@
 -- Active: 1748310992851@@127.0.0.1@1433@model
 -- insertamos datos en customer
-INSERT INTO customer (name, address, type_document, number_document, phone, email)
+INSERT INTO customer (name, address, type_document, number_document, phone, email, birth_date, state)
 VALUES 
-('Juan Perez', 'Av. Las Palmas 123', 'DNI','62273282','989654921', 'juanperez@example.com'),
-('Maria Lopez', 'Jr. Los Sauces 456', 'INE','233912345678234','987654321','marialopez@example.com'),
-('Carlos Ramos', 'Calle Las Gardenias 789', 'INE','45678234', '998877665', 'carlosramos@example.com');
+('Juan Perez', 'Av. Las Palmas 123', 'DNI', '62273282', '989654921', 'juanperez@example.com', '1990-05-12', 'A'),
+('Maria Lopez', 'Jr. Los Sauces 456', 'CNE', '233912345678234', '987654321', 'marialopez@example.com', '1985-08-22', 'A'),
+('Carlos Ramos', 'Calle Las Gardenias 789', 'CNE', '45678234', '998877665', 'carlosramos@example.com', '1992-03-30', 'A');
 
 
 INSERT INTO product (name, description, category, unit_price, registration_date, state, stock) 

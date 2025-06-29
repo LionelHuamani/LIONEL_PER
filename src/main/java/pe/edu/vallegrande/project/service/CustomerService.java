@@ -15,4 +15,6 @@ public interface CustomerService {
     Customer update(Customer customer);
 
     void delete(Long id);
+
+    byte[] generateJasperPdfReport() throws Exception;
 }

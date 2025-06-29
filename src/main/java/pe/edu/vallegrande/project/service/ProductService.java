@@ -1,22 +1,24 @@
 package pe.edu.vallegrande.project.service;
 
-import pe.edu.vallegrande.project.model.ProductModel;
+import pe.edu.vallegrande.project.model.Product;
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
 
-    List<ProductModel> findAll();
+    List<Product> findAll();
 
-    Optional<ProductModel> findById(Long id);
+    Optional<Product> findById(Long id);
 
-    ProductModel save(ProductModel productModel);
+    Product save(Product product);
 
-    ProductModel update(ProductModel productModel);
+    Product update(Product product);
 
-    List<ProductModel> findAllByState(String state); 
+    List<Product> findAllByState(String state); 
 
-    ProductModel restore(Long id);
+    Product restore(Long id);
 
-    ProductModel delete(Long id);
+    Product delete(Long id);
+
+    byte[] generateJasperPdfReport() throws Exception;
 }

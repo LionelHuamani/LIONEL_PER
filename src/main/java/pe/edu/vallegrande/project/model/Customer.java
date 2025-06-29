@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -36,4 +37,9 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "birth_date")
+    private LocalDate birth_date;
+
+    @Column(name = "state")
+    private String state;
 }
