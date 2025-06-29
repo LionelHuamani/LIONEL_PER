@@ -87,7 +87,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private DataSource dataSource;
 
-    @Override
+   @Override
     public byte[] generateJasperPdfReport() throws Exception {
         // Cargar archivo .jasper en src/main/resources/reports (SIN USAR IMÁGENES EN EL JASPER)
         InputStream jasperStream = new ClassPathResource("reports/Customer.jasper").getInputStream();

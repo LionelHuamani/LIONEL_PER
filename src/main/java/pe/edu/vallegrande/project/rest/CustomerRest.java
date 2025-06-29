@@ -61,7 +61,7 @@ public class CustomerRest {
         customerService.delete(id);
     }
 
-    @GetMapping("/pdf")
+   @GetMapping("/pdf")
     public ResponseEntity<byte[]> generateJasperPdfReport() {
         try {
             byte[] pdf = customerService.generateJasperPdfReport();
@@ -75,4 +75,5 @@ public class CustomerRest {
             return ResponseEntity.internalServerError().build();
         }
     }
+
 }
