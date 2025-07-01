@@ -1,4 +1,4 @@
--- Active: 1748310992851@@127.0.0.1@1433@model
+-- Active: 1751234401135@@127.0.0.1@1433@model
 CREATE TABLE customer (
     customer_id INT IDENTITY(1, 1) PRIMARY KEY,
     name VARCHAR(60) NOT NULL,
@@ -18,16 +18,16 @@ SELECT * FROM customer;
 DROP TABLE customer;
 
 CREATE TABLE product (
-    id INT IDENTITY(1, 1) PRIMARY KEY,
-    name VARCHAR(60) NOT NULL,
+    id INT IDENTITY(1,1) PRIMARY KEY, 
+    name VARCHAR(60) NOT NULL, 
     description VARCHAR(200) NOT NULL,
     category VARCHAR(60) NOT NULL,
-    unit_price DECIMAL(6, 2) NOT NULL,
-    registration_date DATE NOT NULL,
-    state CHAR(1) NOT NULL CHECK (state IN ('A', 'I')),
-    stock INT NOT NULL CHECK (stock >= 0)
+    unit_price DECIMAL(6,2) NOT NULL CHECK (unit_price > 0),   
+    registration_date DATE NOT NULL DEFAULT GETDATE(),      
+    state CHAR(1) NOT NULL CHECK (state IN ('A', 'I')),      
+    stock INT NOT NULL CHECK (stock >= 0)             
 );
-
+  
 SELECT * FROM product;
 
 DROP TABLE product;
