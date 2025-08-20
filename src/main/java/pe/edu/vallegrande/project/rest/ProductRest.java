@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpHeaders;
@@ -54,14 +56,16 @@ public class ProductRest {
         return productService.findAllByState(state);
     }
 
-    @PutMapping("/delete/{id}")
-    public Product delete(@PathVariable Long id) {
-        return productService.delete(id);
-    }
-
-    @PutMapping("/restore/{id}")
+    @PatchMapping("/restore/{id}")
+    @RequestMapping(value = "/restore/{id}", method = { RequestMethod.PATCH, RequestMethod.PUT })
     public Product restore(@PathVariable Long id) {
         return productService.restore(id);
+    }
+
+    @PatchMapping("/delete/{id}")
+    @RequestMapping(value = "/delete/{id}", method = { RequestMethod.PATCH, RequestMethod.PUT })
+    public Product delete(@PathVariable Long id) {
+        return productService.delete(id);
     }
 
     @GetMapping("/pdf")

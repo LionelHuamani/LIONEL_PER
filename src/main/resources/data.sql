@@ -1,4 +1,4 @@
--- Active: 1751234401135@@127.0.0.1@1433@model
+-- Active: 1754662285005@@127.0.0.1@1521@XEPDB1@DEVELOPER
 -- insertamos datos en customer
 INSERT INTO customer (name, address, type_document, number_document, phone, email, birth_date, state)
 VALUES 

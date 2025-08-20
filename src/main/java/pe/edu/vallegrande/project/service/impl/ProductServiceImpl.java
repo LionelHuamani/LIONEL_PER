@@ -63,32 +63,38 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product delete(Long id) {
-        log.info("Eliminando lógicamente Datos ID: " + id);
-        Optional<Product> productOpt = productRepository.findById(id);
-        Product product = productOpt.get();
-        product.setState("I");
-        return productRepository.save(product);
+        log.info("Eliminando lógicamente Datos ID: {}", id);
+        return productRepository.findById(id)
+                .map(product -> {
+                    product.setState("I"); // Inactivo
+                    return productRepository.save(product);
+                })
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado con ID: " + id));
     }
 
     @Override
     public Product restore(Long id) {
-        log.info("Restaurando lógicamente Datos ID: " + id);
-        Optional<Product> productOpt = productRepository.findById(id);
-        Product product = productOpt.get();
-        product.setState("A");
-        return productRepository.save(product);
+        log.info("Restaurando lógicamente Datos ID: {}", id);
+        return productRepository.findById(id)
+                .map(product -> {
+                    product.setState("A"); // Activo
+                    return productRepository.save(product);
+                })
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado con ID: " + id));
     }
 
     @Autowired
     private DataSource dataSource;
 
-   @Override
+    @Override
     public byte[] generateJasperPdfReport() throws Exception {
-        // Cargar archivo .jasper en src/main/resources/reports (SIN USAR IMÁGENES EN EL JASPER)
+        // Cargar archivo .jasper en src/main/resources/reports (SIN USAR IMÁGENES EN EL
+        // JASPER)
         InputStream jasperStream = new ClassPathResource("reports/Product.jasper").getInputStream();
         // Sin parámetros
         HashMap<String, Object> params = new HashMap<>();
-        // Llenar reporte con conexión a Oracle Cloud con application.yml | aplicación.properties
+        // Llenar reporte con conexión a Oracle Cloud con application.yml |
+        // aplicación.properties
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperStream, params, dataSource.getConnection());
         // Exportar a PDF
         return JasperExportManager.exportReportToPdf(jasperPrint);

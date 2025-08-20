@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 
@@ -28,15 +29,14 @@ public class Product {
     private String category;
 
     @Column(name = "unit_price")
-    private Double unit_price;
+    private Double unitPrice; 
 
     @Column(name = "registration_date")
-    private String registration_date;
+    private LocalDate registrationDate;
 
     @Column(name = "state")
     private String state;
 
     @Column(name = "stock")
     private Integer stock;
-
 }
