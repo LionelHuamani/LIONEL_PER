@@ -25,18 +25,10 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "category")
-    private String category;
-
     @Column(name = "unit_price")
-    private Double unitPrice; 
-
-    @Column(name = "registration_date")
-    private LocalDate registrationDate;
+    private Double unit_price;
 
     @Column(name = "state")
     private String state;
 
-    @Column(name = "stock")
-    private Integer stock;
 }
