@@ -5,13 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 
 @Entity
 @Data
-@Table(name = "product")
+@Table(name = "product", schema = "DEVELOPER_02")
 public class Product {
 
     @Id
@@ -30,5 +29,4 @@ public class Product {
 
     @Column(name = "state")
     private String state;
-
 }
