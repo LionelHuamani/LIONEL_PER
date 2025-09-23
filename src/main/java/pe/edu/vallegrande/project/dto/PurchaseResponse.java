@@ -5,22 +5,19 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class SaleResponse {
-
-    private Long saleId;
-    private CustomerDto customer;
-    private LocalDateTime saleDate;
+public class PurchaseResponse {
+    private Long purchaseId;
+    private Long supplierId;
+    private LocalDateTime fechaCompra;
     private Double total;
-    private String state;
     private List<ProductDetailDto> products;
 
-    // --- Subclases internas DTO ---
     @Data
     public static class CustomerDto {
         private Long customerId;
-        private String name;            // Customer.name
-        private String typeDocument;    // Customer.type_document
-        private String numberDocument;  // Customer.number_document
+        private String name; // Customer.name
+        private String typeDocument; // Customer.type_document
+        private String numberDocument; // Customer.number_document
     }
 
     @Data
@@ -28,8 +25,8 @@ public class SaleResponse {
         private Long productId;
         private String name;
         private String description;
-        private Double salePrice;
-        private Integer quantity;
+        private Double purchasePrice;
+        private Integer cantidad;
         private Double subtotal;
     }
 
