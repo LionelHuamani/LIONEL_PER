@@ -14,6 +14,10 @@ import pe.edu.vallegrande.project.repository.PurchaseRepository;
 import pe.edu.vallegrande.project.repository.PurchaseDetailRepository;
 import pe.edu.vallegrande.project.service.PurchaseService;
 import lombok.extern.slf4j.Slf4j;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Optional;
+import javax.sql.DataSource;
 
 @Slf4j
 @Service
@@ -24,8 +28,8 @@ public class PurchaseImpl implements PurchaseService {
     private final PurchaseDetailRepository purchaseDetailRepository;
 
     public PurchaseImpl(ProductRepository productRepository,
-                        PurchaseRepository purchaseRepository,
-                        PurchaseDetailRepository purchaseDetailRepository) {
+            PurchaseRepository purchaseRepository,
+            PurchaseDetailRepository purchaseDetailRepository) {
         this.productRepository = productRepository;
         this.purchaseRepository = purchaseRepository;
         this.purchaseDetailRepository = purchaseDetailRepository;
@@ -48,6 +52,10 @@ public class PurchaseImpl implements PurchaseService {
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
             double subtotal = product.getUnit_price() * pr.getCantidad();
+
+            // Actualizar stock del producto
+            product.setStock(product.getStock() + pr.getCantidad());        
+            productRepository.save(product);
 
             PurchaseDetail detail = new PurchaseDetail();
             detail.setProduct(product);
@@ -84,8 +92,7 @@ public class PurchaseImpl implements PurchaseService {
                     pd.setCantidad(d.getCantidad());
                     pd.setSubtotal(d.getSubtotal().doubleValue());
                     return pd;
-                }).collect(Collectors.toList())
-        );
+                }).collect(Collectors.toList()));
 
         return dto;
     }
@@ -96,4 +103,10 @@ public class PurchaseImpl implements PurchaseService {
                 .map(PurchaseImpl::toDto)
                 .collect(Collectors.toList());
     }
+
+    public Optional<PurchaseResponse> findById(Long id) {
+        return purchaseRepository.findById(id)
+                .map(PurchaseImpl::toDto); // mapea entidad -> DTO
+    }
+
 }

@@ -27,6 +27,9 @@ public class Product {
     @Column(name = "unit_price")
     private Double unit_price;
 
+    @Column(name = "stock")     
+    private Integer stock;
+    
     @Column(name = "state")
     private String state;
 }
