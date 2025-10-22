@@ -1,0 +1,126 @@
+<div class="form-container">
+  <div class="form-header">
+    <h1 class="page-title">
+      <i class="icon-product"></i>
+      GESTIÓN DE PRODUCTOS
+    </h1>
+    <p class="page-subtitle">
+      Administra el inventario de productos de la ferretería
+    </p>
+  </div>
+  
+  <div class="form-card">
+    <!-- Filtros y acciones -->
+    <div class="form-section">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="filterState">Filtrar por Estado</label>
+          <select id="filterState" [(ngModel)]="filterState" class="form-input">
+            <option value="ALL">Todos</option>
+            <option value="A">Activos</option>
+            <option value="I">Inactivos</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="sortOrder">Ordenar por Nombre</label>
+          <button 
+            type="button" 
+            class="btn-secondary" 
+            (click)="toggleSortOrder()"
+            style="width: 100%;"
+          >
+            {{ sortAsc ? 'A-Z' : 'Z-A' }}
+          </button>
+        </div>
+        
+        <div class="form-group">
+          <button class="btn-primary" (click)="goProductForm()">
+            <i class="icon-add"></i>
+            Nuevo Producto
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de productos -->
+    <div class="form-section">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Precio Unit.</th>
+              <th>Stock</th>
+              <th>Categoría</th>
+              <th>Proveedor</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of filteredProducts; trackBy: trackByProductId">
+              <td>{{ product.id }}</td>
+              <td>{{ product.name }}</td>
+              <!-- ...existing code... -->
+              <td>{{ product.description ? (product.description | truncate:60) : '-' }}</td>
+        <!-- ...existing code... -->
+              <td>S/ {{ product.unit_price | number:'1.2-2' }}</td>
+              <td>{{ product.stock }}</td>
+              <td>{{ getCategoryName(product.id_category) }}</td>
+              <td>{{ getSupplierName(product.id_supplier) }}</td>
+              <td>
+                <span class="status-badge" [class.active]="product.state === 'A'">
+                  {{ product.state === 'A' ? 'Activo' : 'Inactivo' }}
+                </span>
+              </td>
+              <td class="actions-cell">
+                <button 
+                  class="btn-edit" 
+                  (click)="editProduct(product)"
+                  title="Editar producto"
+                >
+                  <i class="icon-edit"></i>
+                </button>
+                <button 
+                  *ngIf="product.state === 'A'"
+                  class="btn-delete" 
+                  (click)="deleteProduct(product)"
+                  title="Eliminar producto"
+                >
+                  <i class="icon-delete"></i>
+                </button>
+                <button 
+                  *ngIf="product.state === 'I'"
+                  class="btn-restore" 
+                  (click)="restoreProduct(product)"
+                  title="Restaurar producto"
+                >
+                  <i class="icon-restore"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="filteredProducts.length === 0" class="no-data">
+          <p>No hay productos registrados</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acciones adicionales -->
+    <div class="form-actions">
+      <button class="btn-secondary" (click)="generatePDF()">
+        <i class="icon-pdf"></i>
+        Generar PDF
+      </button>
+      <button class="btn-secondary" (click)="generatePDFFrontend()">
+        <i class="icon-pdf"></i>
+        PDF Frontend
+      </button>
+    </div>
+  </div>
+</div>

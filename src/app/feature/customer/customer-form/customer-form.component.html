@@ -1,0 +1,163 @@
+<div class="form-container">
+  <div class="form-header">
+    <h1 class="page-title">
+      <i class="icon-user"></i>
+      {{ form.value.id ? 'MODIFICAR CLIENTE' : 'CREAR CLIENTE' }}
+    </h1>
+    <p class="page-subtitle">
+      {{ form.value.id ? 'Actualiza la información del cliente' : 'Completa los datos del nuevo cliente' }}
+    </p>
+  </div>
+  
+  <div class="form-card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Información Personal -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <i class="icon-person"></i>
+          Información Personal
+        </h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre *</label>
+            <input
+              type="text"
+              id="nombre"
+              formControlName="name"
+              class="form-input"
+              placeholder="Ingresa el nombre"
+            />
+            <div class="error-message" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+              {{ form.get('name')?.getError('nombreInvalido') || 'El nombre es requerido' }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apellido *</label>
+            <input
+              type="text"
+              id="apellido"
+              formControlName="lastName"
+              class="form-input"
+              placeholder="Ingresa el apellido"
+            />
+            <div class="error-message" *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched">
+              {{ form.get('lastName')?.getError('nombreInvalido') || 'El apellido es requerido' }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fechaNacimiento">Fecha de Nacimiento *</label>
+            <input
+              type="date"
+              id="fechaNacimiento"
+              formControlName="birth_date"
+              class="form-input"
+            />
+            <div class="error-message" *ngIf="form.get('birth_date')?.invalid && form.get('birth_date')?.touched">
+              {{ form.get('birth_date')?.getError('fechaInvalida') || 'La fecha de nacimiento es requerida' }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="tipoDocumento">Tipo de Documento *</label>
+            <select
+              id="tipoDocumento"
+              formControlName="type_document"
+              class="form-input"
+            >
+              <option value="">Seleccionar tipo</option>
+              <option value="DNI">DNI</option>
+              <option value="CNE">CNE</option>
+            </select>
+            <div class="error-message" *ngIf="form.get('type_document')?.invalid && form.get('type_document')?.touched">
+              El tipo de documento es requerido
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cedula">Número de Documento *</label>
+            <input
+              type="text"
+              id="cedula"
+              formControlName="number_document"
+              class="form-input"
+              placeholder="Ingresa el número de documento"
+            />
+            <div class="error-message" *ngIf="form.get('number_document')?.invalid && form.get('number_document')?.touched">
+              {{ form.get('number_document')?.getError('documentoInvalido') || 'El número de documento es requerido' }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información de Contacto -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <i class="icon-contact"></i>
+          Información de Contacto
+        </h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefono">Teléfono *</label>
+            <input
+              type="tel"
+              id="telefono"
+              formControlName="phone"
+              class="form-input"
+              placeholder="Ingresa el número de teléfono"
+            />
+            <div class="error-message" *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched">
+              {{ form.get('phone')?.getError('celularInvalido') || 'El teléfono es requerido' }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-input"
+              placeholder="Ingresa el correo electrónico"
+            />
+            <div class="error-message" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+              {{ form.get('email')?.getError('correoInvalido') || 'El email es requerido' }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="direccion">Dirección *</label>
+            <input
+              type="text"
+              id="direccion"
+              formControlName="address"
+              class="form-input"
+              placeholder="Ingresa la dirección completa"
+            />
+            <div class="error-message" *ngIf="form.get('address')?.invalid && form.get('address')?.touched">
+              {{ form.get('address')?.getError('direccionInvalida') || 'La dirección es requerida' }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="goCustomerList()">
+          <i class="icon-cancel"></i>
+          Cancelar
+        </button>
+        <button type="submit" class="btn-primary" [disabled]="form.invalid">
+          <i class="icon-save"></i>
+          {{ form.value.id ? 'Actualizar Cliente' : 'Crear Cliente' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

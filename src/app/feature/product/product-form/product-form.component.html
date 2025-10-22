@@ -1,0 +1,181 @@
+<div class="form-container">
+  <div class="form-header">
+    <h1 class="page-title">
+      <i class="icon-product"></i>
+      {{ form.value.id ? 'MODIFICAR PRODUCTO' : 'CREAR PRODUCTO' }}
+    </h1>
+    <p class="page-subtitle">
+      {{ form.value.id ? 'Actualiza la información del producto' : 'Completa los datos del nuevo producto' }}
+    </p>
+  </div>
+  
+  <div class="form-card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Información Básica -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <i class="icon-info"></i>
+          Información Básica
+        </h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Nombre del Producto *</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-input"
+              placeholder="Ingresa el nombre del producto"
+            />
+            <div class="error-message" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+              <span *ngIf="form.get('name')?.errors?.['required']">El nombre es requerido</span>
+              <span *ngIf="form.get('name')?.errors?.['nombreInvalido']">{{ form.get('name')?.errors?.['nombreInvalido'] }}</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <input
+              type="text"
+              id="description"
+              formControlName="description"
+              class="form-input"
+              placeholder="Descripción del producto"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Información Comercial -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <i class="icon-price"></i>
+          Información Comercial
+        </h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="unit_price">Precio Unitario *</label>
+            <input
+              type="number"
+              id="unit_price"
+              formControlName="unit_price"
+              class="form-input"
+              placeholder="0.00"
+              step="0.01"
+              min="0"
+            />
+            <div class="error-message" *ngIf="form.get('unit_price')?.invalid && form.get('unit_price')?.touched">
+              <span *ngIf="form.get('unit_price')?.errors?.['required']">El precio es requerido</span>
+              <span *ngIf="form.get('unit_price')?.errors?.['min']">El precio debe ser mayor a 0</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="stock">Stock *</label>
+            <input
+              type="number"
+              id="stock"
+              formControlName="stock"
+              class="form-input"
+              placeholder="0"
+              min="0"
+            />
+            <div class="error-message" *ngIf="form.get('stock')?.invalid && form.get('stock')?.touched">
+              <span *ngIf="form.get('stock')?.errors?.['required']">El stock es requerido</span>
+              <span *ngIf="form.get('stock')?.errors?.['min']">El stock debe ser mayor o igual a 0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información de Categorización -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <i class="icon-category"></i>
+          Categorización
+        </h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="id_category">Categoría *</label>
+            <select
+              id="id_category"
+              formControlName="id_category"
+              class="form-input"
+            >
+              <option value="">Selecciona una categoría</option>
+              <option value="1">Herramientas</option>
+              <option value="2">Materiales de Construcción</option>
+              <option value="3">Ferretería General</option>
+              <option value="4">Pinturas</option>
+              <option value="5">Electricidad</option>
+            </select>
+            <div class="error-message" *ngIf="form.get('id_category')?.invalid && form.get('id_category')?.touched">
+              La categoría es requerida
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="id_supplier">Proveedor *</label>
+            <select
+              id="id_supplier"
+              formControlName="id_supplier"
+              class="form-input"
+            >
+              <option value="">Selecciona un proveedor</option>
+              <option value="1">Proveedor A</option>
+              <option value="2">Proveedor B</option>
+              <option value="3">Proveedor C</option>
+              <option value="4">Proveedor D</option>
+            </select>
+            <div class="error-message" *ngIf="form.get('id_supplier')?.invalid && form.get('id_supplier')?.touched">
+              El proveedor es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información de Fecha -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <i class="icon-date"></i>
+          Información de Registro
+        </h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="registration_date">Fecha de Registro</label>
+            <input
+              type="date"
+              id="registration_date"
+              formControlName="registration_date"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="state">Estado *</label>
+            <select
+              id="state"
+              formControlName="state"
+              class="form-input"
+            >
+              <option value="A">Activo</option>
+              <option value="I">Inactivo</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="goProductList()">
+          <i class="icon-cancel"></i>
+          Cancelar
+        </button>
+        <button type="submit" class="btn-primary" [disabled]="form.invalid">
+          <i class="icon-save"></i>
+          {{ form.value.id ? 'Actualizar' : 'Guardar' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
